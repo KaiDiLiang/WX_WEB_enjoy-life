@@ -1,7 +1,7 @@
 # WX_WEB_enjoy-life
-在微信小程序搜索“享受当下时光”，或者用微信扫描下面的二维码哦</br>
-<img src="https://github.com/KaiDiLiang/WX_WEB_enjoy-life/blob/master/readme%20img/8.png"
-width="747" height="1321"/> 
+在微信小程序搜索“享受时光”，或者用微信扫描下面的二维码哦</br>
+<img src="https://github.com/KaiDiLiang/WX_WEB_enjoy-life/blob/master/readme%20img/p9.png"
+width="258" height="294"/> 
  </br>
 
 （1）欢迎页</br>

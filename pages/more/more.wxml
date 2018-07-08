@@ -20,6 +20,6 @@
 </view> 
 <view> 
   <text class="more_info" >友情链接（点击下面文字扫码进入）</text> 
-  <text class="{{selsectState[3]?'more_info moreSelected':'more_info'}}" bindtap='clickGithub'>本项目github地址:https://github.com/KaiDiLiang/WX_WEB</text> 
+  <text class="{{selsectState[3]?'more_info moreSelected':'more_info'}}" bindtap='clickGithub'>本项目github地址:https://github.com/KaiDiLiang/WX_WEB_enjoy-life</text> 
 </view> 
 
