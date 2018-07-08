@@ -35,11 +35,13 @@ Page({
       "/v2/movie/in_theaters" + "?start=0&count=6";
     this.getMovieListData(inTheatersUrl, "inTheaters", "正在热映");
 
+    // 控制授权弹框
     wx.showModal({
       title: '获取授权',
       content: '只获取头像、昵称、位置',
       success: function(res) {
         if(res.confirm) {
+          // 检测是否获得授权
           wx.getSetting({
             success: function (res) {
               if (res.authSetting['scope.userInfo']) {

@@ -6,7 +6,7 @@
 <open-data type="userGender"></open-data>
 <open-data type="userCity"></open-data>
 <view bindtap='showDialogBtn' wx:if="{{canIUse}}" open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'></view>
-<view wx:else>请升级微信版本</view>
+<view wx:else>版本不支持,请升级微信版本</view>
 <view class='customSwiper'>
   <swiper class='banner' autoplay='true' interval='5000' duration='300' bindchange='switchTab'>
     <block wx:for="{{sliderList}}" wx:key="key">
