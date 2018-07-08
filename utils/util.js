@@ -15,7 +15,11 @@ const cityObjs = [{ "id": "35", "provincecode": "150000", "city": "阿拉善盟"
 //城市检索的首字母
 var searchLetter = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
 
-//对城市信息进行分组
+/**
+ * 对城市信息信息进行分类
+ * @data tempArr
+ * @return array
+ */
 function cityList() {
   let tempArr = [];
   searchLetter.map(
@@ -33,7 +37,11 @@ function cityList() {
   return tempArr;
 }
 
-//豆瓣电影
+/**
+ * 对豆瓣电影列表进行星级排列
+ * @data stars
+ * @return array
+ */
 function convertToStarsArray(stars) {
   var num = stars.toString().substring(0, 1);
   var array = [];
@@ -88,6 +96,11 @@ function pushCity() {
 
 }
 
+/**
+ * 日期/时间格式化
+ * @data date
+ * @return array [year,month,day]+[hour,minute,second]
+ */
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -98,6 +111,9 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+/**
+ * 把字符串转换为数字
+ */
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n

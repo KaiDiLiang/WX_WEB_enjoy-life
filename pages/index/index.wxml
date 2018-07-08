@@ -1,6 +1,12 @@
 <!--index.wxml-->
 <import src="../movies/movie-list/movie-list-template.wxml" />
 <import src="../movies/movie-grid/movie-grid-template.wxml" />
+<open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName"></open-data>
+<open-data type="userGender"></open-data>
+<open-data type="userCity"></open-data>
+<view bindtap='showDialogBtn' wx:if="{{canIUse}}" open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'></view>
+<view wx:else>请升级微信版本</view>
 <view class='customSwiper'>
   <swiper class='banner' autoplay='true' interval='5000' duration='300' bindchange='switchTab'>
     <block wx:for="{{sliderList}}" wx:key="key">

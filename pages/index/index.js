@@ -8,6 +8,7 @@ Page({
   data: {
     location: '',
     county: '',
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     sliderList: [
       { selected: true, imageSource: 'http://up.enterdesk.com/edpic/7d/35/13/7d3513ecabdf1f7eb4f1407f0e82f23c.jpg' },
       { selected: false, imageSource: '../../images/2.jpg' },
@@ -34,18 +35,54 @@ Page({
       "/v2/movie/in_theaters" + "?start=0&count=6";
     this.getMovieListData(inTheatersUrl, "inTheaters", "正在热映");
 
-    //获取用户信息
-    wx.getUserInfo({
-      success: function (res) {
-        var log = Date.now();
-        res.userInfo.logtime = util.formatTime(new Date(log));
-        var userInfos = wx.getStorageSync('userInfos') || [];
-        userInfos.unshift(res.userInfo);
-        wx.setStorageSync('userInfos', userInfos);
+    wx.showModal({
+      title: '获取授权',
+      content: '只获取头像、昵称、位置',
+      success: function(res) {
+        if(res.confirm) {
+          wx.getSetting({
+            success: function (res) {
+              if (res.authSetting['scope.userInfo']) {
+                // 获得授权时，直接调用 getUserInfo 获取用户头像、昵称、城市
+                wx.getUserInfo({
+                  success: function (res) {
+                    var log = Date.now();
+                    res.userInfo.logtime = util.formatTime(new Date(log));
+                    var userInfos = wx.getStorageSync('userInfos') || [];
+                    userInfos.unshift(res.userInfo);
+                    wx.setStorageSync('userInfos', userInfos);
+                  }
+                })
+              }
+            }
+          })
+        }
+      },
+      bindGetUserInfo: function (e) {
+        console.log(e.detail.userInfo);
       }
-    })
-
-  },
+    })},
+    // 查看是否得到授权
+    // wx.getSetting({
+    //   success: function(res) {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 获得授权时，直接调用 getUserInfo 获取用户头像、昵称、城市
+    //       wx.getUserInfo({
+    //         success: function(res) {
+    //           var log = Date.now();
+    //           res.userInfo.logtime = util.formatTime(new Date(log));
+    //           var userInfos = wx.getStorageSync('userInfos') || [];
+    //           userInfos.unshift(res.userInfo);
+    //           wx.setStorageSync('userInfos', userInfos);
+    //           }
+    //         })
+    //       }
+    //     }
+    //   })
+    // },
+    // bindGetUserInfo: function(e) {
+    //   console.log(e.detail.userInfo);
+    // },
 
   //调用豆瓣api
   getMovieListData: function (url, settedKey, categoryTitle) {
